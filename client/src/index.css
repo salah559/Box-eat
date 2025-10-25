@@ -48,19 +48,19 @@
 
   --popover-border: 30 10% 90%;
 
-  --primary: 2 85% 52%;
+  --primary: 15 85% 55%;
 
   --primary-foreground: 0 0% 98%;
 
-  --secondary: 40 75% 95%;
+  --secondary: 40 85% 96%;
 
   --secondary-foreground: 0 0% 15%;
 
-  --muted: 30 15% 96%;
+  --muted: 30 20% 97%;
 
-  --muted-foreground: 0 0% 40%;
+  --muted-foreground: 0 0% 45%;
 
-  --accent: 45 95% 88%;
+  --accent: 45 100% 65%;
 
   --accent-foreground: 0 0% 15%;
 
