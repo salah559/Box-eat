@@ -124,7 +124,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Orders Routes
-  app.get("/api/orders", async (req, res) => {
+  app.get("/api/orders", requireAdmin, async (req, res) => {
     try {
       const orders = await storage.getAllOrders();
       res.json(orders);
@@ -133,7 +133,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/orders/:id", async (req, res) => {
+  app.get("/api/orders/:id", requireAdmin, async (req, res) => {
     try {
       const order = await storage.getOrder(req.params.id);
       if (!order) {
@@ -168,7 +168,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Reservations Routes
-  app.get("/api/reservations", async (req, res) => {
+  app.get("/api/reservations", requireAdmin, async (req, res) => {
     try {
       const reservations = await storage.getAllReservations();
       res.json(reservations);
@@ -177,7 +177,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/reservations/:id", async (req, res) => {
+  app.get("/api/reservations/:id", requireAdmin, async (req, res) => {
     try {
       const reservation = await storage.getReservation(req.params.id);
       if (!reservation) {
