@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingCart, Star, Sparkles, Minus, Plus, Trash2 } from "lucide-react";
 import type { MenuItem } from "@shared/schema";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CartItem extends MenuItem {
   quantity: number;
@@ -112,58 +113,74 @@ export default function Menu() {
           </div>
         ) : filteredItems && filteredItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item) => (
-              <Card 
-                key={item.id}
-                className="overflow-hidden hover-elevate active-elevate-2 transition-transform"
-                data-testid={`card-menu-item-${item.id}`}
-              >
-                <div className="aspect-[4/3] relative overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.nameAr}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 left-3 flex gap-2">
-                    {item.isPopular && (
-                      <Badge className="bg-primary text-primary-foreground">
-                        <Star className="h-3 w-3 ml-1 fill-current" />
-                        مميز
-                      </Badge>
-                    )}
-                    {item.isNew && (
-                      <Badge className="bg-accent text-accent-foreground">
-                        <Sparkles className="h-3 w-3 ml-1" />
-                        جديد
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-                
-                <div className="p-4">
-                  <h3 className="font-serif font-semibold text-lg mb-2 text-foreground">
-                    {item.nameAr}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-                    {item.descriptionAr}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-primary font-serif">
-                      {item.price} دج
-                    </span>
-                    <Button 
-                      size="sm"
-                      onClick={() => addToCart(item)}
-                      data-testid={`button-add-to-cart-${item.id}`}
+            <AnimatePresence mode="wait">
+              {filteredItems.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                >
+                  <Card 
+                    className="overflow-hidden hover-elevate active-elevate-2 transition-transform h-full"
+                    data-testid={`card-menu-item-${item.id}`}
+                  >
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                      className="aspect-[4/3] relative overflow-hidden"
                     >
-                      <Plus className="h-4 w-4 ml-1" />
-                      إضافة
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            ))}
+                      <img 
+                        src={item.image} 
+                        alt={item.nameAr}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-3 left-3 flex gap-2">
+                        {item.isPopular && (
+                          <Badge className="bg-primary text-primary-foreground">
+                            <Star className="h-3 w-3 ml-1 fill-current" />
+                            مميز
+                          </Badge>
+                        )}
+                        {item.isNew && (
+                          <Badge className="bg-accent text-accent-foreground">
+                            <Sparkles className="h-3 w-3 ml-1" />
+                            جديد
+                          </Badge>
+                        )}
+                      </div>
+                    </motion.div>
+                    
+                    <div className="p-4">
+                      <h3 className="font-serif font-semibold text-lg mb-2 text-foreground">
+                        {item.nameAr}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+                        {item.descriptionAr}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <span className="text-xl font-bold text-primary font-serif">
+                          {item.price} دج
+                        </span>
+                        <motion.div whileTap={{ scale: 0.95 }}>
+                          <Button 
+                            size="sm"
+                            onClick={() => addToCart(item)}
+                            className="hover:scale-110 transition-transform"
+                            data-testid={`button-add-to-cart-${item.id}`}
+                          >
+                            <Plus className="h-4 w-4 ml-1" />
+                            إضافة
+                          </Button>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         ) : (
           <div className="text-center py-16">
