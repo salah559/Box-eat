@@ -16,10 +16,12 @@ import type { InsertOffer, Offer } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
-import burgerImage from "@assets/generated_images/Gourmet_burger_food_photography_93147261.png";
-import dessertImage from "@assets/generated_images/Chocolate_dessert_photography_821a184d.png";
-
-const offerImages = [burgerImage, dessertImage];
+const offerImages = [
+  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&h=600&fit=crop",
+];
 
 export function AdminOffers() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -38,7 +40,7 @@ export function AdminOffers() {
       description: "",
       descriptionAr: "",
       discount: 10,
-      image: burgerImage,
+      image: offerImages[0],
       validUntil: "",
       isActive: true,
     },

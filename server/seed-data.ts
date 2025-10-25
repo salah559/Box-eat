@@ -11,7 +11,7 @@ export async function seedData() {
 
   console.log("Seeding initial data...");
 
-  // Menu Items
+  // Menu Items - Using static image paths that will work in both dev and production
   const menuItems: InsertMenuItem[] = [
     {
       name: "Classic Burger",
@@ -20,7 +20,7 @@ export async function seedData() {
       descriptionAr: "لحم بقري طازج مع الخضروات الطازجة",
       price: "450.00",
       category: "برجر",
-      image: "/attached_assets/generated_images/Gourmet_burger_food_photography_93147261.png",
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop",
       isAvailable: true,
       isPopular: true,
       isNew: false,
@@ -32,7 +32,7 @@ export async function seedData() {
       descriptionAr: "بطاطا مقلية ذهبية مقرمشة",
       price: "200.00",
       category: "برجر",
-      image: "/attached_assets/generated_images/Golden_french_fries_photography_5ed2fd49.png",
+      image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&h=600&fit=crop",
       isAvailable: true,
       isPopular: true,
       isNew: false,
@@ -44,7 +44,7 @@ export async function seedData() {
       descriptionAr: "دجاج مشوي مع الخضروات الطازجة",
       price: "380.00",
       category: "ساندويتش",
-      image: "/attached_assets/generated_images/Chicken_wrap_sandwich_photography_8721a98b.png",
+      image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&h=600&fit=crop",
       isAvailable: true,
       isPopular: false,
       isNew: true,
@@ -56,7 +56,7 @@ export async function seedData() {
       descriptionAr: "عصير طبيعي منعش",
       price: "150.00",
       category: "مشروبات",
-      image: "/attached_assets/generated_images/Refreshing_beverage_photography_6b823fc0.png",
+      image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=800&h=600&fit=crop",
       isAvailable: true,
       isPopular: false,
       isNew: false,
@@ -68,7 +68,7 @@ export async function seedData() {
       descriptionAr: "حلوى شوكولاتة غنية",
       price: "280.00",
       category: "حلويات",
-      image: "/attached_assets/generated_images/Chocolate_dessert_photography_821a184d.png",
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop",
       isAvailable: true,
       isPopular: true,
       isNew: false,
@@ -80,7 +80,7 @@ export async function seedData() {
       descriptionAr: "سلطة خضراء مشكلة مع الصلصة",
       price: "250.00",
       category: "سلطات",
-      image: "/attached_assets/generated_images/Fresh_salad_photography_3edf5ee5.png",
+      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop",
       isAvailable: true,
       isPopular: false,
       isNew: false,
@@ -92,7 +92,7 @@ export async function seedData() {
       descriptionAr: "قطع دجاج مشوية بإتقان",
       price: "420.00",
       category: "برجر",
-      image: "/attached_assets/generated_images/Grilled_chicken_photography_8ab6d707.png",
+      image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop",
       isAvailable: true,
       isPopular: true,
       isNew: false,
@@ -103,7 +103,7 @@ export async function seedData() {
     await storage.createMenuItem(item);
   }
 
-  // Offers
+  // Offers - Using static image URLs
   const offers: InsertOffer[] = [
     {
       title: "Burger Combo Deal",
@@ -111,7 +111,7 @@ export async function seedData() {
       description: "Get burger, fries and drink",
       descriptionAr: "احصل على برجر، بطاطا ومشروب",
       discount: 25,
-      image: "/attached_assets/generated_images/Gourmet_burger_food_photography_93147261.png",
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop",
       validUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       isActive: true,
     },
@@ -121,7 +121,7 @@ export async function seedData() {
       description: "Special discount on all desserts",
       descriptionAr: "خصم خاص على جميع الحلويات",
       discount: 15,
-      image: "/attached_assets/generated_images/Chocolate_dessert_photography_821a184d.png",
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop",
       validUntil: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       isActive: true,
     },

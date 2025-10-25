@@ -16,15 +16,15 @@ import type { InsertMenuItem, MenuItem } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
-import burgerImage from "@assets/generated_images/Gourmet_burger_food_photography_93147261.png";
-import friesImage from "@assets/generated_images/Golden_french_fries_photography_5ed2fd49.png";
-import wrapImage from "@assets/generated_images/Chicken_wrap_sandwich_photography_8721a98b.png";
-import drinkImage from "@assets/generated_images/Refreshing_beverage_photography_6b823fc0.png";
-import dessertImage from "@assets/generated_images/Chocolate_dessert_photography_821a184d.png";
-import saladImage from "@assets/generated_images/Fresh_salad_photography_3edf5ee5.png";
-import chickenImage from "@assets/generated_images/Grilled_chicken_photography_8ab6d707.png";
-
-const foodImages = [burgerImage, friesImage, wrapImage, drinkImage, dessertImage, saladImage, chickenImage];
+const foodImages = [
+  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop",
+];
 
 export function AdminMenu() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -44,7 +44,7 @@ export function AdminMenu() {
       descriptionAr: "",
       price: "0",
       category: "برجر",
-      image: burgerImage,
+      image: foodImages[0],
       isAvailable: true,
       isPopular: false,
       isNew: false,
